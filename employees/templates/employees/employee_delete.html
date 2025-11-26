@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Employee</title>
+    <style>
+        body {
+            background: #f1f4f8;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 400px;
+            margin: 60px auto;
+            background: #fff;
+            padding: 32px 24px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #c0392b;
+            margin-bottom: 24px;
+        }
+        button, a {
+            margin: 10px;
+            padding: 10px 24px;
+            border-radius: 24px;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button {
+            background: #c0392b;
+            color: #fff;
+            border: none;
+            transition: background 0.2s;
+        }
+        button:hover {
+            background: #962d22;
+        }
+        a {
+            background: #ccc;
+            color: #333;
+        }
+        a:hover {
+            background: #999;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Delete Employee</h1>
+        <p>Are you sure you want to delete employee <strong>{{ employee.name }}</strong>?</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit">Confirm Delete</button>
+            <a href="/api/list/">Cancel</a>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Profile Search</title>
+    <style>
+        body { background: #f1f4f8; font-family: Arial, sans-serif; }
+        .container {
+            max-width: 400px; margin: 60px auto; background: #fff;
+            padding: 32px 24px; border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.09); text-align: center;
+        }
+        h1 { margin-bottom: 18px; color: #304ea8; }
+        .back-btn {
+            display: inline-block; background: #4285f4; color: #fff;
+            padding: 8px 18px; border-radius: 20px; text-decoration: none;
+            margin-top: 16px;
+        }
+        .back-btn:hover { background: #276bdc; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Employee Profile</h1>
+        {% if employee %}
+            <p><b>ID:</b> {{ employee.eid }}</p>
+            <p><b>Name:</b> {{ employee.name }}</p>
+            <p><b>Position:</b> {{ employee.position }}</p>
+            <p><b>Salary:</b> ₹{{ employee.salary }}</p>
+        {% elif eid %}
+            <p>No employee found for ID: {{ eid }}</p>
+        {% else %}
+            <p>Please enter an Employee ID to search.</p>
+        {% endif %}
+        <a class="back-btn" href="/api/create/">Back to Add Employee</a>
+    </div>
+</body>
+</html>

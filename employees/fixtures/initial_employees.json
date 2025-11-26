@@ -1,0 +1,22 @@
+[
+  {"model": "employees.employee", "pk": 1, "fields": {"eid": "E001", "name": "Alice Johnson", "position": "Developer", "salary": "60000.00", "is_new": true}},
+  {"model": "employees.employee", "pk": 2, "fields": {"eid": "E002", "name": "Bob Smith", "position": "Manager", "salary": "80000.00", "is_new": false}},
+  {"model": "employees.employee", "pk": 3, "fields": {"eid": "E003", "name": "Carol White", "position": "Designer", "salary": "55000.00", "is_new": true}},
+  {"model": "employees.employee", "pk": 4, "fields": {"eid": "E004", "name": "David Brown", "position": "QA Engineer", "salary": "58000.00", "is_new": true}},
+  {"model": "employees.employee", "pk": 5, "fields": {"eid": "E005", "name": "Emma Davis", "position": "Developer", "salary": "63000.00", "is_new": false}},
+  {"model": "employees.employee", "pk": 6, "fields": {"eid": "E006", "name": "Frank Wilson", "position": "HR Specialist", "salary": "52000.00", "is_new": true}},
+  {"model": "employees.employee", "pk": 7, "fields": {"eid": "E007", "name": "Grace Lee", "position": "Product Manager", "salary": "90000.00", "is_new": false}},
+  {"model": "employees.employee", "pk": 8, "fields": {"eid": "E008", "name": "Henry Clark", "position": "Support Engineer", "salary": "48000.00", "is_new": true}},
+  {"model": "employees.employee", "pk": 9, "fields": {"eid": "E009", "name": "Isabella Turner", "position": "UX Designer", "salary": "57000.00", "is_new": false}},
+  {"model": "employees.employee", "pk": 10, "fields": {"eid": "E010", "name": "Jack King", "position": "Developer", "salary": "62000.00", "is_new": true}},
+  {"model": "employees.employee", "pk": 11, "fields": {"eid": "E011", "name": "Karen Scott", "position": "QA Engineer", "salary": "59000.00", "is_new": false}},
+  {"model": "employees.employee", "pk": 12, "fields": {"eid": "E012", "name": "Liam Green", "position": "Developer", "salary": "61000.00", "is_new": true}},
+  {"model": "employees.employee", "pk": 13, "fields": {"eid": "E013", "name": "Mia Adams", "position": "Business Analyst", "salary": "70000.00", "is_new": false}},
+  {"model": "employees.employee", "pk": 14, "fields": {"eid": "E014", "name": "Noah Hill", "position": "Developer", "salary": "64000.00", "is_new": true}},
+  {"model": "employees.employee", "pk": 15, "fields": {"eid": "E015", "name": "Olivia Young", "position": "Marketing Specialist", "salary": "55000.00", "is_new": false}},
+  {"model": "employees.employee", "pk": 16, "fields": {"eid": "E016", "name": "Paul Nelson", "position": "Support Engineer", "salary": "49000.00", "is_new": true}},
+  {"model": "employees.employee", "pk": 17, "fields": {"eid": "E017", "name": "Quinn Mitchell", "position": "Developer", "salary": "63000.00", "is_new": false}},
+  {"model": "employees.employee", "pk": 18, "fields": {"eid": "E018", "name": "Rachel Perez", "position": "HR Specialist", "salary": "53000.00", "is_new": true}},
+  {"model": "employees.employee", "pk": 19, "fields": {"eid": "E019", "name": "Samuel Baker", "position": "Designer", "salary": "56000.00", "is_new": false}},
+  {"model": "employees.employee", "pk": 20, "fields": {"eid": "E020", "name": "Tina Collins", "position": "Product Manager", "salary": "91000.00", "is_new": true}}
+]

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Employee List</title>
+  <style>
+    body {
+      background: #f1f4f8;
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      max-width: 700px;
+      margin: 60px auto;
+      background: #fff;
+      padding: 32px 24px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+    h1 {
+      text-align: center;
+      color: #304ea8;
+      margin-bottom: 28px;
+    }
+    form.search-form {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    form.search-form input[type="text"] {
+      padding: 8px;
+      width: 300px;
+      border-radius: 5px;
+      border: 1px solid #bbb;
+      box-sizing: border-box;
+      margin-right: 8px;
+      font-size: 14px;
+    }
+    form.search-form button {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 16px;
+      background: #4285f4;
+      color: #fff;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background 0.2s;
+    }
+    form.search-form button:hover {
+      background: #276bdc;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 18px;
+    }
+    th, td {
+      padding: 12px 10px;
+      text-align: left;
+      border-bottom: 1px solid #e6e6e6;
+    }
+    th {
+      background: #f7faff;
+      color: #4285f4;
+      font-weight: 600;
+    }
+    .add-btn {
+      display: block;
+      width: max-content;
+      background: #4285f4;
+      color: #fff;
+      padding: 10px 22px;
+      border-radius: 24px;
+      text-decoration: none;
+      font-size: 16px;
+      margin: 0 auto 10px auto;
+      text-align: center;
+      transition: background 0.2s;
+    }
+    .add-btn:hover {
+      background: #2c70c9;
+    }
+    .action-link {
+      color: #304ea8;
+      margin-right: 10px;
+      text-decoration: none;
+    }
+    .delete-link {
+      color: #d44;
+      margin-left: 5px;
+    }
+    .pagination {
+      text-align: center;
+    }
+    .pagination a {
+      margin: 0 8px;
+      padding: 8px 14px;
+      text-decoration: none;
+      background: #e2e6ef;
+      color: #304ea8;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .pagination a:hover {
+      background: #b2bbdb;
+    }
+    .pagination span.current {
+      margin: 0 8px;
+      padding: 8px 14px;
+      font-weight: 700;
+      color: #fff;
+      background: #4285f4;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Employee List</h1>
+    <a href="/api/create/" class="add-btn">Add Employee</a>
+    
+    <form method="get" class="search-form">
+      <input type="text" name="q" placeholder="Search by name or position" value="{{ query|default_if_none:'' }}">
+      <button type="submit">Search</button>
+    </form>
+
+    <table>
+      <tr>
+        <th>EID</th>
+        <th>Name</th>
+        <th>Position</th>
+        <th>Salary (₹)</th>
+        <th>Actions</th>
+      </tr>
+      {% for employee in employees %}
+      <tr>
+        <td>{{ employee.eid }}</td>
+        <td>{{ employee.name }}</td>
+        <td>{{ employee.position }}</td>
+        <td>{{ employee.salary }}</td>
+        <td>
+          <a href="/api/edit/{{ employee.pk }}/" class="action-link">Edit</a>
+          <a href="/api/delete/{{ employee.pk }}/" class="delete-link">Delete</a> |
+          <a href="/api/salary/{{ employee.pk }}/" class="action-link">Add Salary</a>
+        </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="5" style="text-align:center;">No employees found.</td>
+      </tr>
+      {% endfor %}
+    </table>
+
+    <div class="pagination">
+      {% if employees.has_previous %}
+        <a href="?page={{ employees.previous_page_number }}{% if query %}&q={{ query }}{% endif %}">Previous</a>
+      {% endif %}
+
+      <span class="current">Page {{ employees.number }} of {{ employees.paginator.num_pages }}</span>
+
+      {% if employees.has_next %}
+        <a href="?page={{ employees.next_page_number }}{% if query %}&q={{ query }}{% endif %}">Next</a>
+      {% endif %}
+    </div>
+  </div>
+</body>
+</html>
