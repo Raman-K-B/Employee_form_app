@@ -115,7 +115,7 @@
 <body>
   <div class="container">
     <h1>Employee List</h1>
-    <a href="/api/create/" class="add-btn">Add Employee</a>
+    <a href="{% url 'employee-create-html' %}" class="add-btn">Add Employee</a>
     
     <form method="get" class="search-form">
       <input type="text" name="q" placeholder="Search by name or position" value="{{ query|default_if_none:'' }}">
@@ -137,9 +137,9 @@
         <td>{{ employee.position }}</td>
         <td>{{ employee.salary }}</td>
         <td>
-          <a href="/api/edit/{{ employee.pk }}/" class="action-link">Edit</a>
-          <a href="/api/delete/{{ employee.pk }}/" class="delete-link">Delete</a> |
-          <a href="/api/salary/{{ employee.pk }}/" class="action-link">Add Salary</a>
+          <a href="{% url 'employee-edit-html' employee.pk %}" class="action-link">Edit</a>
+          <a href="{% url 'employee-delete-html' employee.pk %}" class="delete-link">Delete</a> |
+          <a href="{% url 'employee-salary-update-html' employee.pk %}" class="action-link">Add Salary</a>
         </td>
       </tr>
       {% empty %}
