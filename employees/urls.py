@@ -11,7 +11,7 @@ from .views import (
 )
 
 urlpatterns = [
-    # API endpoints for Employee
+    # API endpoints for Employee data (REST Framework)
     path('', EmployeeListCreate.as_view(), name='employee-list-create'),
     path('<int:pk>/', EmployeeRetrieveUpdateDestroy.as_view(), name='employee-detail-update-delete'),
 

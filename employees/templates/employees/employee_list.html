@@ -1,165 +1,69 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Employee List</title>
-  <style>
-    body {
-      background: #f1f4f8;
-      font-family: Arial, sans-serif;
-    }
-    .container {
-      max-width: 700px;
-      margin: 60px auto;
-      background: #fff;
-      padding: 32px 24px;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-    }
-    h1 {
-      text-align: center;
-      color: #304ea8;
-      margin-bottom: 28px;
-    }
-    form.search-form {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    form.search-form input[type="text"] {
-      padding: 8px;
-      width: 300px;
-      border-radius: 5px;
-      border: 1px solid #bbb;
-      box-sizing: border-box;
-      margin-right: 8px;
-      font-size: 14px;
-    }
-    form.search-form button {
-      padding: 8px 16px;
-      border: none;
-      border-radius: 16px;
-      background: #4285f4;
-      color: #fff;
-      cursor: pointer;
-      font-size: 14px;
-      transition: background 0.2s;
-    }
-    form.search-form button:hover {
-      background: #276bdc;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 18px;
-    }
-    th, td {
-      padding: 12px 10px;
-      text-align: left;
-      border-bottom: 1px solid #e6e6e6;
-    }
-    th {
-      background: #f7faff;
-      color: #4285f4;
-      font-weight: 600;
-    }
-    .add-btn {
-      display: block;
-      width: max-content;
-      background: #4285f4;
-      color: #fff;
-      padding: 10px 22px;
-      border-radius: 24px;
-      text-decoration: none;
-      font-size: 16px;
-      margin: 0 auto 10px auto;
-      text-align: center;
-      transition: background 0.2s;
-    }
-    .add-btn:hover {
-      background: #2c70c9;
-    }
-    .action-link {
-      color: #304ea8;
-      margin-right: 10px;
-      text-decoration: none;
-    }
-    .delete-link {
-      color: #d44;
-      margin-left: 5px;
-    }
-    .pagination {
-      text-align: center;
-    }
-    .pagination a {
-      margin: 0 8px;
-      padding: 8px 14px;
-      text-decoration: none;
-      background: #e2e6ef;
-      color: #304ea8;
-      border-radius: 8px;
-      font-weight: 600;
-      transition: background 0.2s;
-    }
-    .pagination a:hover {
-      background: #b2bbdb;
-    }
-    .pagination span.current {
-      margin: 0 8px;
-      padding: 8px 14px;
-      font-weight: 700;
-      color: #fff;
-      background: #4285f4;
-      border-radius: 8px;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>Employee List</h1>
-    <a href="{% url 'employee-create-html' %}" class="add-btn">Add Employee</a>
-    
-    <form method="get" class="search-form">
-      <input type="text" name="q" placeholder="Search by name or position" value="{{ query|default_if_none:'' }}">
-      <button type="submit">Search</button>
-    </form>
+<div class="container" style="max-width: 800px; margin: 60px auto; background: #ffffff; padding: 40px 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+  <h1 style="text-align: center; color: #2c3e50; font-weight: 700; font-size: 2.5rem; margin-bottom: 30px;">Employee List</h1>
+  
+  <div style="text-align: center; margin-bottom: 25px;">
+    <a href="{% url 'employee-create-html' %}" class="add-btn" style="background: #2980b9; padding: 12px 28px; border-radius: 28px; color: #fff; font-weight: 600; text-decoration: none; box-shadow: 0 6px 12px rgba(41,128,185,0.4); transition: all 0.3s ease; display: inline-block;">
+      Add Employee
+    </a>
+    <a href="{% url 'employee-list-create' %}" class="add-btn" style="background: #27ae60; padding: 12px 28px; border-radius: 28px; color: #fff; font-weight: 600; text-decoration: none; box-shadow: 0 6px 12px rgba(39,174,96,0.4); transition: all 0.3s ease; display: inline-block; margin-left: 15px;">
+      Updated Employee List
+    </a>
+  </div>
 
-    <table>
-      <tr>
-        <th>EID</th>
+  <form method="get" class="search-form" style="text-align: center; margin-bottom: 30px;">
+    <input type="text" name="q" placeholder="Search by name or position" value="{{ query|default_if_none:'' }}" 
+      style="width: 320px; padding: 12px 16px; border-radius: 8px; border: 1px solid #bdc3c7; font-size: 1rem; transition: border-color 0.3s ease; outline: none;"
+      onfocus="this.style.borderColor='#2980b9';" onblur="this.style.borderColor='#bdc3c7';"
+    >
+    <button type="submit" style="padding: 12px 24px; border-radius: 24px; background: #2980b9; color: #fff; border: none; font-weight: 600; font-size: 1rem; cursor: pointer; transition: background-color 0.3s ease;">
+      Search
+    </button>
+  </form>
+
+  <table style="width: 100%; border-collapse: separate; border-spacing: 0 12px; font-size: 1rem; color: #34495e;">
+    <thead>
+      <tr style="background: #ecf0f1; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700;">
+        <th style="padding: 14px 20px; border-radius: 12px 0 0 12px;">EID</th>
         <th>Name</th>
         <th>Position</th>
         <th>Salary (₹)</th>
-        <th>Actions</th>
+        <th style="border-radius: 0 12px 12px 0;">Actions</th>
       </tr>
+    </thead>
+    <tbody>
       {% for employee in employees %}
-      <tr>
-        <td>{{ employee.eid }}</td>
+      <tr style="background: #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.05); transition: transform 0.2s ease; cursor: default;">
+        <td style="padding: 16px 20px;">{{ employee.eid }}</td>
         <td>{{ employee.name }}</td>
         <td>{{ employee.position }}</td>
         <td>{{ employee.salary }}</td>
-        <td>
-          <a href="{% url 'employee-edit-html' employee.pk %}" class="action-link">Edit</a>
-          <a href="{% url 'employee-delete-html' employee.pk %}" class="delete-link">Delete</a> |
-          <a href="{% url 'employee-salary-update-html' employee.pk %}" class="action-link">Add Salary</a>
+        <td style="padding: 16px 20px;">
+          <a href="{% url 'employee-edit-html' employee.pk %}" class="action-link" style="color: #2980b9; font-weight: 600; text-decoration: none; margin-right: 14px; transition: color 0.3s;">Edit</a>
+          <a href="{% url 'employee-delete-html' employee.pk %}" class="delete-link" style="color: #e74c3c; font-weight: 600; text-decoration: none; margin-right: 14px; transition: color 0.3s;">Delete</a>
+          <a href="{% url 'employee-salary-update-html' employee.pk %}" class="action-link" style="color: #27ae60; font-weight: 600; text-decoration: none; transition: color 0.3s;">Add Salary</a>
         </td>
       </tr>
       {% empty %}
       <tr>
-        <td colspan="5" style="text-align:center;">No employees found.</td>
+        <td colspan="5" style="text-align:center; padding: 20px; color: #7f8c8d;">No employees found.</td>
       </tr>
       {% endfor %}
-    </table>
+    </tbody>
+  </table>
 
-    <div class="pagination">
-      {% if employees.has_previous %}
-        <a href="?page={{ employees.previous_page_number }}{% if query %}&q={{ query }}{% endif %}">Previous</a>
-      {% endif %}
+  <div class="pagination" style="text-align: center; margin-top: 25px;">
+    {% if employees.has_previous %}
+      <a href="?page={{ employees.previous_page_number }}{% if query %}&q={{ query }}{% endif %}" 
+         style="background: #bdc3c7; margin: 0 8px; padding: 10px 18px; border-radius: 10px; color: #2c3e50; font-weight: 700; text-decoration: none; transition: background 0.25s;">Previous</a>
+    {% endif %}
 
-      <span class="current">Page {{ employees.number }} of {{ employees.paginator.num_pages }}</span>
+    <span class="current" style="margin: 0 8px; padding: 10px 18px; border-radius: 10px; color: #fff; background: #2980b9; font-weight: 700;">
+      Page {{ employees.number }} of {{ employees.paginator.num_pages }}
+    </span>
 
-      {% if employees.has_next %}
-        <a href="?page={{ employees.next_page_number }}{% if query %}&q={{ query }}{% endif %}">Next</a>
-      {% endif %}
-    </div>
+    {% if employees.has_next %}
+      <a href="?page={{ employees.next_page_number }}{% if query %}&q={{ query }}{% endif %}" 
+         style="background: #bdc3c7; margin: 0 8px; padding: 10px 18px; border-radius: 10px; color: #2c3e50; font-weight: 700; text-decoration: none; transition: background 0.25s;">Next</a>
+    {% endif %}
   </div>
-</body>
-</html>
+</div>
